@@ -1,7 +1,10 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import cartImage from "../assets/svg/empty.svg";
+// CORRECTED:
+// Replaced the missing "empty.svg" with a known image from your project's assets.
+// The path goes up from 'pages' to 'src', then into 'assets/img'.
+import cartImage from "../assets/img/image.png";
 
 import CartItems from "../components/CartItems";
 

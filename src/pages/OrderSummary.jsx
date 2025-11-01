@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { v4 as uuid } from "uuid";
-import { TbDiscountCheckFilled } from "react-icons/tb";
 
-import ConfirmOrder from "../assets/svg/confirmed.svg";
+// CORRECTED: Replaced the broken icon with a working one from Font Awesome
+import { FaCheckCircle } from "react-icons/fa";
 
+import ConfirmOrder from "../assets/img/image.png";
 import { getCartTotal } from "../utils/totalPrice";
 import { clearCart } from "../utils/cartSlice";
-
 import Error from "../components/Error";
 
 const OrderSummary = () => {
@@ -17,6 +16,7 @@ const OrderSummary = () => {
   const unique_id = uuid();
   const orderID = unique_id.slice(0, 6);
   const dispatch = useDispatch();
+
   useEffect(() => {
     return () => {
       dispatch(clearCart());
@@ -30,7 +30,8 @@ const OrderSummary = () => {
       <p className="heading-text">Order Summary</p>
       <p className="order-confirm-info">
         {" "}
-        <TbDiscountCheckFilled color="green" size="1.5rem" />
+        {/* Used the new, working icon here */}
+        <FaCheckCircle color="green" size="1.5rem" />
         Your Order is Confirmed!
       </p>
 
@@ -44,7 +45,6 @@ const OrderSummary = () => {
           {Object.values(cartItems).map((item) => (
             <div key={item.id} className="cart-summary-item">
               <p className="item-name">{item.name}</p>
-
               <p>{item.quantity} pc.</p>
               <p>₹ {item.price / 100}</p>
             </div>
