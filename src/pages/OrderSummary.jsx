@@ -1,14 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuid } from "uuid";
-
-// CORRECTED: Replaced the broken icon with a working one from Font Awesome
 import { FaCheckCircle } from "react-icons/fa";
-
-import ConfirmOrder from "../assets/img/image.png";
-import { getCartTotal } from "../utils/totalPrice";
-import { clearCart } from "../utils/cartSlice";
-import Error from "../components/Error";
+// CORRECTED: The path goes up from 'pages' to 'assets', then down to 'img/svg'.
+import ConfirmOrder from "../img/svg/confirmed.svg";
+import { getCartTotal } from "../../utils/totalPrice"; // Path also needs correction
+import { clearCart } from "../../utils/cartSlice"; // Path also needs correction
+import Error from "../../components/Error"; // Path also needs correction
 
 const OrderSummary = () => {
   const cartItems = useSelector((store) => store.cart.items);
@@ -21,25 +19,27 @@ const OrderSummary = () => {
     return () => {
       dispatch(clearCart());
     };
-  }, []);
+  }, [dispatch]);
 
-  return Object.values(cartItems).length <= 0 ? (
-    <Error />
-  ) : (
+  if (Object.keys(cartItems).length === 0) {
+    return <Error />;
+  }
+
+  return (
     <div className="container order-summary">
       <p className="heading-text">Order Summary</p>
       <p className="order-confirm-info">
-        {" "}
-        {/* Used the new, working icon here */}
         <FaCheckCircle color="green" size="1.5rem" />
         Your Order is Confirmed!
       </p>
-
-      <img className="display-img-md mtop10 mbottom10" src={ConfirmOrder} />
+      <img
+        className="display-img-md mtop10 mbottom10"
+        src={ConfirmOrder}
+        alt="Order confirmed graphic"
+      />
       <p>Sit back while we deliver it in less than 30 minutes!!</p>
       <p className="heading-text mtop20">Order Details</p>
       <p className="mbottom10">Order ID: #{orderID.toUpperCase()}</p>
-
       <div className="order-summary-details">
         <div className="cart-order-summary">
           {Object.values(cartItems).map((item) => (

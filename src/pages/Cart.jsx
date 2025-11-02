@@ -1,20 +1,14 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
-// CORRECTED:
-// Replaced the missing "empty.svg" with a known image from your project's assets.
-// The path goes up from 'pages' to 'src', then into 'assets/img'.
-import cartImage from "../assets/img/image.png";
-
-import CartItems from "../components/CartItems";
+// CORRECTED: The path goes up from 'pages' to 'assets', then down to 'img/svg'.
+import cartImage from "../img/svg/empty.svg";
+import CartItems from "../../components/CartItems"; // Path also needs correction
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
-
   return (
     <div className="container cart-container">
       <h2 className="heading-text">Cart Items</h2>
-
       {Object.keys(cartItems).length > 0 ? (
         <CartItems cartItems={cartItems} />
       ) : (
@@ -22,14 +16,12 @@ const Cart = () => {
           <p className="paragraph">
             Nothing here! Try adding some delicious meals from our menu!
           </p>
-          <img className="display-img-bg" src={cartImage} alt="cart" />
-
+          <img className="display-img-bg" src={cartImage} alt="Empty cart graphic" />
           <Link className="place-order" to="/">
             See Restaurants
           </Link>
         </div>
       )}
-
       {Object.keys(cartItems).length > 0 && (
         <Link to="/checkout" className="place-order mtop20">
           Checkout

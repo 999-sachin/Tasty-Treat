@@ -1,43 +1,47 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 import { address } from "../constants";
-
 import { BiHomeHeart } from "react-icons/bi";
 import { HiOfficeBuilding } from "react-icons/hi";
-import { BsFillCreditCardFill } from "react-icons/bs";
+import { BsFillCreditCardFill, BsQuestionCircleFill } from "react-icons/bs";
 import { FaHandsHelping } from "react-icons/fa";
 
+// Helper function to get the correct icon based on address type
+const getAddressIcon = (addressType) => {
+  switch (addressType) {
+    case "Home":
+      return <BiHomeHeart size="1.5rem" />;
+    case "Office":
+      return <HiOfficeBuilding size="1.5rem" />;
+    default:
+      return <BsQuestionCircleFill size="1.5rem" />; // A fallback icon for "Others"
+  }
+};
+
 const Checkout = () => {
-  const [userAddress, setUserAddress] = useState("");
+  const [userAddress, setUserAddress] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState("");
+
   return (
     <div className="container checkout">
       <p className="heading-text">Checkout</p>
       <div className="address-container">
         <p className="subheading-text">Select your address</p>
         <div className="all-address">
-          {address.map((address, index) => (
+          {address.map((addr) => (
             <div
-              key={index}
+              key={addr.id} // Use stable ID for key
               className={
-                userAddress.id === address.id
+                userAddress?.id === addr.id
                   ? "address checkout-selected"
                   : "address"
               }
-              onClick={() => setUserAddress(address)}
+              onClick={() => setUserAddress(addr)}
             >
-              {" "}
-              <p>
-                {address.AddressType === "Home" ? (
-                  <BiHomeHeart size="1.5rem" />
-                ) : (
-                  <HiOfficeBuilding size="1.5rem" />
-                )}
-              </p>
-              <p>{address.Name}</p>
-              <p>{address.Mobile}</p>
-              <p>{address.Address}</p>
+              <p>{getAddressIcon(addr.AddressType)}</p>
+              <p>{addr.Name}</p>
+              <p>{addr.Mobile}</p>
+              <p>{addr.Address}</p>
             </div>
           ))}
         </div>
@@ -53,8 +57,7 @@ const Checkout = () => {
                 }
                 onClick={() => setPaymentMethod("COD")}
               >
-                {" "}
-                <FaHandsHelping color="green" /> COD {" "}
+                <FaHandsHelping color="green" /> COD
               </button>
               <button
                 className={
@@ -64,8 +67,7 @@ const Checkout = () => {
                 }
                 onClick={() => setPaymentMethod("Credit Card")}
               >
-                {" "}
-                <BsFillCreditCardFill color="green" /> Credit Cards {" "}
+                <BsFillCreditCardFill color="green" /> Credit Cards
               </button>
             </div>
           </div>

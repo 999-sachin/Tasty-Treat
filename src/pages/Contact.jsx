@@ -1,10 +1,10 @@
-import contact from "../assets/svg/contact.svg";
+// CORRECTED: The path goes up from 'pages' to 'assets', then down to 'img/svg'.
+import contact from "../assets/img/svg/contact.svg";
 
 const Contact = () => {
   return (
     <div className="container">
       <h2 className="heading-text">Contact us</h2>
-
       <p className="subheading-text">
         Find the best food delivery service with Tasty treats!
       </p>
@@ -15,7 +15,7 @@ const Contact = () => {
         contact us section must be easily accessible and should have all the
         necessary information that the customer might need.
       </p>
-      <img className="display-img-bg mtop20" src={contact} />
+      <img className="display-img-bg mtop20" src={contact} alt="Contact us graphic" />
     </div>
   );
 };
