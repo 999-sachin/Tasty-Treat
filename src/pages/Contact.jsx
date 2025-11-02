@@ -1,4 +1,4 @@
-// CORRECTED: The path goes up from 'pages' to 'assets', then down to 'img/svg'.
+// This is the definitive correct path for your structure
 import contact from "../assets/img/svg/contact.svg";
 
 const Contact = () => {

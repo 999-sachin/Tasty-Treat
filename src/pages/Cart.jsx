@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-// CORRECTED: The path goes up from 'pages' to 'assets', then down to 'img/svg'.
-import cartImage from "../img/svg/empty.svg";
-import CartItems from "../../components/CartItems"; // Path also needs correction
+// This is the definitive correct path for your structure
+import cartImage from "../assets/img/svg/empty.svg";
+import CartItems from "../components/CartItems";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);

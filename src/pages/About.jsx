@@ -1,8 +1,8 @@
 import { useState } from "react";
-// CORRECTED: The path goes up from 'pages' to 'assets', then down to 'img/svg'.
-import about from "../img/svg/about.svg";
-import { FAQs, aboutContent } from "../../constants"; // Path also needs correction
-import FAQ from "../../components/FAQ"; // Path also needs correction
+// This is the definitive correct path for your structure
+import about from "../assets/img/svg/about.svg";
+import { FAQs, aboutContent } from "../constants";
+import FAQ from "../components/FAQ";
 
 const About = () => {
   const [visibleSection, setVisibleSection] = useState("");

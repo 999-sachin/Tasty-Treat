@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuid } from "uuid";
 import { FaCheckCircle } from "react-icons/fa";
-// CORRECTED: The path goes up from 'pages' to 'assets', then down to 'img/svg'.
-import ConfirmOrder from "../img/svg/confirmed.svg";
-import { getCartTotal } from "../../utils/totalPrice"; // Path also needs correction
-import { clearCart } from "../../utils/cartSlice"; // Path also needs correction
-import Error from "../../components/Error"; // Path also needs correction
+// This is the definitive correct path for your structure
+import ConfirmOrder from "../assets/img/svg/confirmed.svg";
+import { getCartTotal } from "../utils/totalPrice";
+import { clearCart } from "../utils/cartSlice";
+import Error from "../components/Error";
 
 const OrderSummary = () => {
   const cartItems = useSelector((store) => store.cart.items);
