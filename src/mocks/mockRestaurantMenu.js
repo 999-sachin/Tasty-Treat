@@ -1,5 +1,8 @@
 // src/mocks/mockRestaurantMenu.js
 
+// Import a local image that we know exists in our project
+import placeholderImage from '../assets/img/image.png';
+
 const mockMenu = {
   info: {
     name: "Mock Restaurant - The Royal Indian",
@@ -17,22 +20,22 @@ const mockMenu = {
           name: "Mock Paneer Butter Masala",
           description: "Creamy paneer in a rich tomato gravy. A classic favorite.",
           price: 25000,
-          // CORRECTED: Using valid image IDs
-          cloudinaryImageId: "iivuhjc2mswi9l9ascr1",
+          // CHANGED: Using a local image import instead of an ID
+          image: placeholderImage,
         },
         {
           id: "102",
           name: "Mock Dal Makhani",
           description: "Slow-cooked black lentils with butter and cream.",
           price: 22000,
-          cloudinaryImageId: "d4026211c2157144e311f53ef788a5c4",
+          image: placeholderImage,
         },
         {
           id: "103",
           name: "Mock Garlic Naan",
           description: "Soft Indian bread with garlic and butter.",
           price: 5000,
-          cloudinaryImageId: "s6f85pdyal0a2s3xtjmc",
+          image: placeholderImage,
         },
       ],
     },
@@ -45,14 +48,14 @@ const mockMenu = {
           name: "Mock Chicken Biryani",
           description: "Flavorful long-grain rice cooked with chicken and spices.",
           price: 35000,
-          cloudinaryImageId: "ld1u2ose4xanjbfalm2k",
+          image: placeholderImage,
         },
         {
           id: "202",
           name: "Mock Mutton Rogan Josh",
           description: "Aromatic mutton curry from Kashmir.",
           price: 45000,
-          cloudinaryImageId: "zggqzcgj4bcsd0agv49r",
+          image: placeholderImage,
         },
       ],
     },
